@@ -19,3 +19,13 @@ Route::get('/', function () {
 //attach controller to route
 //name for hrefs
 Route::get('/products', [ ProductController::class , 'index']) -> name("products.index");
+
+
+//route to show forms for new product
+
+Route::get('/products/create', [ ProductController::class, 'showForm']) -> name("products.create");
+
+
+//route to submit of new product form and store data
+
+Route::post('/products/store', [ ProductController::class, 'storeProduct']);

@@ -11,6 +11,10 @@ class Product extends Model
 {
     use HasFactory;
 
-
+    //table name
     protected $table = 'product';
+
+
+    //no timestamps
+    public $timestamps = false;
 }
