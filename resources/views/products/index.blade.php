@@ -5,7 +5,9 @@
 
 @foreach ($products as $product)
 
-    <h1>{{$product->name}}<h1>
+    <a href="{{ route('products.show', $product->id) }}">
+        <h1>{{$product->name}}<h1>
+    </a>
     <h1>{{$product->price}}<h1>
     
 @endforeach

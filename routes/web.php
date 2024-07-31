@@ -34,4 +34,4 @@ Route::post('/products/store', [ ProductController::class, 'storeProduct']);
 
 //route to view a specific product with id
 //makes sure id is a number
-Route::get('/products/{id}', [ ProductController::class , 'showProduct'])->whereNumber('id');
+Route::get('/products/{id}', [ ProductController::class , 'showProduct'])->whereNumber('id')->name('products.show');

@@ -56,6 +56,11 @@ class ProductController extends Controller
         //get product with id from url params
         $product = Product::find($id);
 
+        //if invalid id then page not found
+        if($product === null){
+            abort(404);
+        }
+
 
         //render a page for the product with $id
         return view("products/showProduct", [
