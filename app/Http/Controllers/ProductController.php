@@ -24,6 +24,18 @@ class ProductController extends Controller
     //route to store new product from form data
 
     public function storeProduct(Request $req){
+
+        //form validation
+
+        $req->validate([
+            'name' => ['required', 'max:100'],
+            'price' => ['required'],
+
+        ]);
+
+
+
+
         $product = new Product;
 
         //create product object to be inserted into db
@@ -34,5 +46,20 @@ class ProductController extends Controller
 
         //go ot products home page to view all products
         return redirect()->route('products.index');
+    }
+
+
+
+    //handler for viewinga specific product
+
+    public function showProduct(string $id){
+        //get product with id from url params
+        $product = Product::find($id);
+
+
+        //render a page for the product with $id
+        return view("products/showProduct", [
+            'product' => $product
+        ]);
     }
 }
