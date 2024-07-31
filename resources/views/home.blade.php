@@ -1,7 +1,7 @@
 
 <x-layout>
 
-<h1>
+<h1 class=" text-3xl">
     main index page
 </h1>
 
