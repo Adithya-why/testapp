@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 
 class ProductController extends Controller
-{   //route to view all products
+{   
+    
+    
+    //route to view all products
     public function index(){
         $products = Product::all();
         
@@ -15,6 +18,8 @@ class ProductController extends Controller
             'products' => $products
         ]);
     }
+
+
     //route to show form for new product
     public function showForm(){
         return view('products.create');
@@ -65,6 +70,16 @@ class ProductController extends Controller
         //render a page for the product with $id
         return view("products/showProduct", [
             'product' => $product
+        ]);
+    }
+
+
+    //function to display edit form of a product
+
+    public function editProduct(Product $product){
+
+        return view('products.editProduct', [
+            'product' => $product 
         ]);
     }
 }
