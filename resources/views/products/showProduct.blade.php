@@ -7,5 +7,12 @@
         <h5>{{ $product->price}}</h5>
 
         <a href="{{ route('product.edit', $product->id) }}">Edit</a>
+
+        <form action="{{ route('product.delete', $product->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+
+            <button type="submit">Delete</button>
+        </form>
     </div>
 </x-layout>

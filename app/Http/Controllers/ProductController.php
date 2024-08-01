@@ -96,6 +96,9 @@ class ProductController extends Controller
 
         ]);
 
+
+        //find the product to be updated
+        //update values from request
         $product = Product::find($id);
 
         $product->name = $req->name;
@@ -103,7 +106,24 @@ class ProductController extends Controller
 
         $product->save();
 
+
+        //redirect to all products
         return redirect()->route('products.index');
         
+    }
+
+
+
+    //function to delete a product
+
+    public function destroy(string $id){
+
+        $product = Product::find($id);
+
+
+        $product->delete();
+
+        return redirect() -> route('products.index') -> with('status', 'Product Deleted');
+
     }
 }

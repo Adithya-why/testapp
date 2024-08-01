@@ -8,6 +8,12 @@
     @vite('resources/css/app.css')
 </head>
 <body>
+    
+    @if (session('status'))
+        <div>{{ session('status') }}</div>
+    @endif
+
+    <!-- Where all the content wrapped in layouts go-->
     {{ $slot }}
 </body>
 </html>

@@ -51,3 +51,10 @@ Route::get('/products/{product}/edit', [ ProductController::class, 'editProduct'
 //gets id of product to be updated and form input
 
 Route::put('/products/{id}', [ ProductController::class, 'editPut']) -> name('product.editPut');
+
+
+
+
+//route to delete a product
+
+Route::delete('/products/{id}', [ ProductController::class, 'destroy']) -> name('product.delete');
