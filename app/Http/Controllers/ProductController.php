@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Product;
+use Illuminate\Cache\RedisTagSet;
 
 class ProductController extends Controller
 {   
@@ -81,5 +82,28 @@ class ProductController extends Controller
         return view('products.editProduct', [
             'product' => $product 
         ]);
+    }
+
+
+
+    //route to receive edited product details and save in db
+
+    public function editPut(Request $req, string $id){
+
+        $req->validate([
+            'name' => ['required', 'max:100'],
+            'price' => ['required'],
+
+        ]);
+
+        $product = Product::find($id);
+
+        $product->name = $req->name;
+        $product->price = $req->price;
+
+        $product->save();
+
+        return redirect()->route('products.index');
+        
     }
 }

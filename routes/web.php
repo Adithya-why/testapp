@@ -12,7 +12,7 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('home');
   
-});
+}) -> name('home');
 
 
 
@@ -41,4 +41,13 @@ Route::get('/products/{id}', [ ProductController::class , 'showProduct'])->where
 //uses route model binding with id
 //automatically gets product obj from id and sends to controller
 
+//shows edit form with details filled in
+//when submitted sends put request to products/id to be updated
 Route::get('/products/{product}/edit', [ ProductController::class, 'editProduct'])->name('product.edit') ;
+
+
+//put route to edit an existing product and save in db
+//accept form output from previous route(proudct/edit)
+//gets id of product to be updated and form input
+
+Route::put('/products/{id}', [ ProductController::class, 'editPut']) -> name('product.editPut');
