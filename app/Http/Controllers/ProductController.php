@@ -13,7 +13,10 @@ class ProductController extends Controller
     
     //route to view all products
     public function index(){
-        $products = Product::all();
+
+        //uses pagination
+        //only 2 at a time
+        $products = Product::paginate(2);
         
         return view('products/index', [
             'products' => $products
